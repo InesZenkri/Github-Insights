@@ -40,6 +40,7 @@ Ensure you have the following installed:
 Add the token to a .env file :
 ```bash
    GITHUB_TOKEN=your_personal_access_token
+```
 4. Run the application using:
 ```bash
    python main.py
@@ -47,10 +48,11 @@ Add the token to a .env file :
 - - -
 
 ## 🛠️ Technologies Used
-Backend: Python, Flask
-Data Processing: Pandas
-Visualizations: Matplotlib, Plotly
-API Integration: GitHub REST API
+
+- Backend: Python, Flask
+- Data Processing: Pandas
+- Visualizations: Matplotlib, Plotly
+- API Integration: GitHub REST API
 
 
 ## I welcome contributions! 
