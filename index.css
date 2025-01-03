@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&display=swap');
+
+body {
+  font-family: 'Fira Code', monospace;
+}
+
+.terminal-window {
+  background-color: #1a1b26;
+  border: 1px solid #30365F;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(43, 108, 176, 0.2);
+}
+
+.terminal-header {
+  background-color: #24283b;
+  border-bottom: 1px solid #30365F;
+  border-radius: 8px 8px 0 0;
+}
+
+.terminal-circle {
+  @apply w-3 h-3 rounded-full;
+}
+
+.terminal-text {
+  color: #a9b1d6;
+}
+
+.terminal-prompt {
+  color: #7aa2f7;
+}
+
+.terminal-command {
+  color: #9ece6a;
+}
+
+.terminal-output {
+  color: #e0af68;
+}
+
+.terminal-error {
+  color: #f7768e;
+}
+
+.glow-effect {
+  box-shadow: 0 0 10px rgba(122, 162, 247, 0.2);
+  transition: box-shadow 0.3s ease;
+}
+
+.glow-effect:hover {
+  box-shadow: 0 0 20px rgba(122, 162, 247, 0.4);
+}
