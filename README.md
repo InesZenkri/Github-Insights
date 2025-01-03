@@ -29,16 +29,22 @@ Ensure you have the following installed:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/InesZenkri/Github-Insights.git```
+   git clone https://github.com/InesZenkri/Github-Insights.git
+   ```
 2. Navigate to the project directory:
  ```bash
-   cd Github-Insights
+    cd Github-Insights
 ```
+
 3. Generate a personal access token from GitHub with the necessary permissions for reading repository and user data.
 Add the token to a .env file :
-GITHUB_TOKEN=your_personal_access_token
+```bash
+   GITHUB_TOKEN=your_personal_access_token
 4. Run the application using:
-python main.py
+```bash
+   python main.py
+```
+- - -
 
 ## 🛠️ Technologies Used
 Backend: Python, Flask
@@ -47,4 +53,4 @@ Visualizations: Matplotlib, Plotly
 API Integration: GitHub REST API
 
 
-I welcome contributions! 
+## I welcome contributions! 
