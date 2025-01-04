@@ -1,13 +1,16 @@
 export class GitHubError extends Error {
-  constructor(message: string, public status?: number) {
+  constructor(message: string, public status: number = 500) {
     super(message);
     this.name = 'GitHubError';
+    this.status = status;
   }
 }
 
 export function getErrorMessage(error: unknown): string {
   if (error instanceof GitHubError) {
     switch (error.status) {
+      case 400:
+        return 'Invalid request. Please check your input and try again.';
       case 401:
         return 'GitHub API authentication failed. Please check your token.';
       case 403:
