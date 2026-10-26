@@ -2,6 +2,30 @@
 
 A terminal-style GitHub statistics frontend built with React, TypeScript and Vite. Search for a GitHub username to view public profile information, repository totals and a language chart, then download the stats card as a PNG.
 
+## Preview
+
+![GitHub Insights interface and repository-language chart](1-github-insights-preview.png)
+
+*Cropped views of the live interface, captured on 26 October 2026. The chart counts public repositories by primary language, not lines of code. Contribution and streak cards are excluded from this preview because they currently use simulated data.*
+
+Try `gh user InesZenkri` in the terminal prompt on the [live demo](https://github-insights.netlify.app/).
+
+## How data reaches the screen
+
+```mermaid
+flowchart LR
+    A[Username search] --> B[GitHub REST API]
+    B --> C[Public profile]
+    B --> D[Up to 100 repositories]
+    D --> E[Stars, forks and language chart]
+    F[Random demo counts] --> G[Contribution total and streaks]
+    C --> H[Stats card and PNG export]
+    E --> H
+    G -. Simulated, not GitHub history .-> H
+    style F fill:#fff0e0,stroke:#c55a11,color:#242424
+    style G fill:#fff0e0,stroke:#c55a11,color:#242424
+```
+
 ## Data and limitations
 
 - **Real GitHub data:** profile details, public repositories, stars and forks come from the GitHub REST API.
