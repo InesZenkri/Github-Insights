@@ -1,58 +1,53 @@
 # GitHub Insights
 
-A powerful tool to analyze and visualize your GitHub activity and repository statistics. GitHub Insights helps developers and teams better understand their contributions and project dynamics by providing meaningful insights in an intuitive format.
+A terminal-style GitHub statistics frontend built with React, TypeScript and Vite. Search for a GitHub username to view public profile information, repository totals and a language chart, then download the stats card as a PNG.
 
----
+## Data and limitations
 
-## 🎯 Features
+- **Real GitHub data:** profile details, public repositories, stars and forks come from the GitHub REST API.
+- **Simulated statistics:** contribution totals, current streak and longest streak are calculated from randomly generated demo data, not the user's GitHub contribution history. The current app displays these alongside real data without labelling them as simulated.
+- Repository totals cover the first page of up to 100 repositories, not necessarily the user's full account.
+- The language chart counts repositories by their primary language. It does not measure lines of code or language proficiency.
+- The visitor counter uses an external service and falls back to `1` when that service fails.
 
-- **User Contribution Analysis**: Visualize your commits, pull requests, and issues.
-- **Repository Metrics**: Gain insights into stars, forks, and contributors.
-- **Activity Trends**: Track your activity trends over time.
-- **Interactive Dashboards**: View data with rich, interactive visualizations.
-- **Exportable Reports**: Save your insights as reports for future reference or team sharing.
+This is a frontend demo, not a reliable contribution-history report.
 
----
+## Features
 
-## 🚀 Getting Started
+- Search public GitHub profiles by username.
+- Display repository, star and fork totals for the fetched repositories.
+- Show the five most common primary repository languages.
+- Download the displayed stats card as a PNG.
+- Open LinkedIn sharing for the app's URL.
 
-Follow these steps to set up and run GitHub Insights on your local machine:
+## Run locally
 
-### Prerequisites
+Install Node.js with npm and Git, then:
 
-Ensure you have the following installed:
-- [Python](https://www.python.org/) 3.7+
-- [Git](https://git-scm.com/)
-- Dependencies listed in `requirements.txt`
-
-### Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/InesZenkri/Github-Insights.git
-   ```
-2. Navigate to the project directory:
- ```bash
-    cd Github-Insights
-```
-
-3. Generate a personal access token from GitHub with the necessary permissions for reading repository and user data.
-Add the token to a .env file :
 ```bash
-   GITHUB_TOKEN=your_personal_access_token
+git clone https://github.com/InesZenkri/Github-Insights.git
+cd Github-Insights
+npm ci
+npm run dev
 ```
-4. Run the application using:
-```bash
-   python main.py
-```
-- - -
 
-## 🛠️ Technologies Used
+Open the local URL printed by Vite.
 
-- Backend: Python, Flask
-- Data Processing: Pandas
-- Visualizations: Matplotlib, Plotly
-- API Integration: GitHub REST API
+The app can request public GitHub data without a token, subject to GitHub's unauthenticated API rate limits. Do not put a personal access token in `VITE_GITHUB_TOKEN` for a public deployment: Vite environment variables used by frontend code are exposed to the browser.
 
+## Commands
 
-## I welcome contributions! 
+| Command | Purpose |
+| --- | --- |
+| `npm run dev` | Start the Vite development server |
+| `npm run build` | Build the frontend into `dist/` |
+| `npm run preview` | Preview the production build locally |
+| `npm run lint` | Run ESLint |
+
+## Stack
+
+React, TypeScript, Vite, Tailwind CSS, React Query, Axios, Recharts and html-to-image. This repository contains the frontend, not a Python/Flask backend.
+
+## License
+
+[MIT](LICENSE)
