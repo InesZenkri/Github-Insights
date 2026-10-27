@@ -1,6 +1,6 @@
 import React from 'react';
-import { UserStats } from '../types/github';
-import { Calendar, Award, Flame, Code, GitBranch, Star, GitFork } from 'lucide-react';
+import { UserStats, Repository } from '../types/github';
+import { Calendar, Award, Flame, GitBranch, Star, GitFork } from 'lucide-react';
 import { StatBox } from './StatBox';
 import { LanguageChart } from './LanguageChart';
 import { VisitorCounter } from './VisitorCounter';
@@ -8,7 +8,7 @@ import { Watermark } from './Watermark';
 
 interface StatsCardProps {
   stats: UserStats;
-  repos: any[];
+  repos: Repository[];
   username: string;
 }
 
