@@ -7,10 +7,14 @@ import { StatsCard } from './components/StatsCard';
 import { ShareButtons } from './components/ShareButtons';
 import { LoadingState } from './components/LoadingState';
 import { ErrorMessage } from './components/ErrorMessage';
+import { getExternalPullRequests } from './services/externalPullRequests';
+import { OpenSourceContributions } from './components/OpenSourceContributions';
+import { ProfileLink } from './components/ProfileLink';
 import { getErrorMessage } from './utils/errors';
+import { buildProfileUrl, getUsernameFromSearch } from './utils/profileUrl';
 
 function App() {
-  const [username, setUsername] = useState('');
+  const [username, setUsername] = useState(() => getUsernameFromSearch(window.location.search));
   const statsRef = useRef<HTMLDivElement>(null);
 
   const { data: userData, isLoading: isLoadingUser, error: userError } = useQuery(
@@ -31,11 +35,28 @@ function App() {
     { enabled: !!username }
   );
 
+  // Kept separate from the main error: search has its own, tighter rate limit
+  // and a failure here should not hide the rest of the profile.
+  const {
+    data: externalPrs,
+    isLoading: isLoadingExternalPrs,
+    error: externalPrsError,
+  } = useQuery(['external-prs', username], () => getExternalPullRequests(username), {
+    enabled: !!username,
+    retry: false,
+  });
+
   const error = userError || reposError || contributionsError;
   const isLoading = isLoadingUser || isLoadingContributions;
 
   const handleSearch = (searchUsername: string) => {
     setUsername(searchUsername);
+    // Keep the address bar in sync so the current profile can be shared.
+    window.history.replaceState(
+      null,
+      '',
+      buildProfileUrl('', window.location.pathname, searchUsername)
+    );
   };
 
   return (
@@ -71,6 +92,17 @@ function App() {
               stats={contributionsData} 
               repos={reposData} 
               username={username} 
+            />
+
+            <OpenSourceContributions
+              username={username}
+              data={externalPrs}
+              isLoading={isLoadingExternalPrs}
+              error={externalPrsError}
+            />
+
+            <ProfileLink
+              url={buildProfileUrl(window.location.origin, window.location.pathname, username)}
             />
 
             <div className="flex justify-center mt-8">
