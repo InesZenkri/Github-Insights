@@ -1,6 +1,8 @@
 import React, { useRef, useState } from 'react';
 import { useQuery } from 'react-query';
 import { getUser, getRepositories, getContributions } from './services/github';
+import { getExternalPullRequests } from './services/externalPullRequests';
+import { OpenSourceContributions } from './components/OpenSourceContributions';
 import { Header } from './components/Header';
 import { TerminalPrompt } from './components/TerminalPrompt';
 import { StatsCard } from './components/StatsCard';
@@ -30,6 +32,17 @@ function App() {
     () => getContributions(username),
     { enabled: !!username }
   );
+
+  // Kept separate from the main error: search has its own, tighter rate limit
+  // and a failure here should not hide the rest of the profile.
+  const {
+    data: externalPrs,
+    isLoading: isLoadingExternalPrs,
+    error: externalPrsError,
+  } = useQuery(['external-prs', username], () => getExternalPullRequests(username), {
+    enabled: !!username,
+    retry: false,
+  });
 
   const error = userError || reposError || contributionsError;
   const isLoading = isLoadingUser || isLoadingContributions;
@@ -71,6 +84,13 @@ function App() {
               stats={contributionsData} 
               repos={reposData} 
               username={username} 
+            />
+
+            <OpenSourceContributions
+              username={username}
+              data={externalPrs}
+              isLoading={isLoadingExternalPrs}
+              error={externalPrsError}
             />
 
             <div className="flex justify-center mt-8">
