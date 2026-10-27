@@ -1,6 +1,7 @@
 import React from 'react';
 import { UserStats, Repository } from '../types/github';
 import { Calendar, Award, Flame, GitBranch, Star, GitFork } from 'lucide-react';
+import { MonthlyActivity } from './MonthlyActivity';
 import { StatBox } from './StatBox';
 import { LanguageChart } from './LanguageChart';
 import { LanguageEvidence } from './LanguageEvidence';
@@ -57,6 +58,8 @@ export function StatsCard({ stats, repos, username }: StatsCardProps) {
           value={totalForks}
         />
       </div>
+
+      <MonthlyActivity days={stats.contributionsByDay} />
 
       <LanguageChart languages={stats.mostUsedLanguages} />
       <LanguageEvidence repos={repos} />
