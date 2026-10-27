@@ -4,9 +4,9 @@ A terminal-style GitHub statistics frontend built with React, TypeScript and Vit
 
 ## Preview
 
-![GitHub Insights interface with contribution statistics, activity by month and the repository-language chart](1-github-insights-preview.png)
+![GitHub Insights interface with contribution statistics, activity by month and the repository-language chart](3-github-insights-preview.png)
 
-![Languages with the repositories behind them and project cards](2-recruiter-evidence-preview.png)
+![Languages with the repositories behind them and project cards](4-recruiter-evidence-preview.png)
 
 *The app after opening `?user=InesZenkri`, captured from the live deployment on 27 October 2026. Contribution totals, streaks and monthly activity come from the public contribution calendar GitHub shows on the user's profile. The language chart counts public repositories by primary language, not lines of code. The pull request list sits below the section shown in the second image.*
 
