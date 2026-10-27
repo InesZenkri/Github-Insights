@@ -4,6 +4,7 @@ import { Calendar, Award, Flame, GitBranch, Star, GitFork } from 'lucide-react';
 import { StatBox } from './StatBox';
 import { LanguageChart } from './LanguageChart';
 import { LanguageEvidence } from './LanguageEvidence';
+import { ProjectHighlights } from './ProjectHighlights';
 import { VisitorCounter } from './VisitorCounter';
 import { Watermark } from './Watermark';
 
@@ -58,6 +59,7 @@ export function StatsCard({ stats, repos, username }: StatsCardProps) {
       </div>
 
       <LanguageChart languages={stats.mostUsedLanguages} />
+      <ProjectHighlights repos={repos} />
       <LanguageEvidence repos={repos} />
       <Watermark />
     </div>
