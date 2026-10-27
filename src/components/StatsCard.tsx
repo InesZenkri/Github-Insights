@@ -5,6 +5,7 @@ import { StatBox } from './StatBox';
 import { LanguageChart } from './LanguageChart';
 import { VisitorCounter } from './VisitorCounter';
 import { Watermark } from './Watermark';
+import { ProjectHighlights } from './ProjectHighlights';
 
 interface StatsCardProps {
   stats: UserStats;
@@ -58,6 +59,7 @@ export function StatsCard({ stats, repos, username }: StatsCardProps) {
 
       <LanguageChart languages={stats.mostUsedLanguages} />
       <Watermark />
+      <ProjectHighlights repos={repos} />
     </div>
   );
 }
