@@ -65,7 +65,7 @@ export function OpenSourceContributions({
                   href={group.repoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#7aa2f7] underline font-medium"
+                  className="text-[#7aa2f7] underline font-medium break-all"
                 >
                   {group.repo}
                 </a>
