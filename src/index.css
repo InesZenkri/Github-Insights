@@ -4,8 +4,14 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&display=swap');
 
+/* Match the page so overscroll and browser chrome areas stay dark. */
+html {
+  background-color: #1a1b26;
+}
+
 body {
   font-family: 'Fira Code', monospace;
+  background-color: #1a1b26;
 }
 
 .terminal-window {
