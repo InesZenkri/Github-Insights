@@ -21,8 +21,10 @@ export function MonthlyActivity({ days }: MonthlyActivityProps) {
       <p className="text-xs text-gray-400 mb-4">
         Contributions per month from the public contribution calendar on the GitHub profile, with
         contributions in {activeMonths} of the {months.length} months shown. The first and last
-        month can be partial. Work that GitHub does not count, such as private work (unless the
-        user shows it), commits with an unlinked email, or work outside GitHub, is not included.
+        month can be partial. GitHub shows private-repository contributions only as anonymous
+        counts, and only if the user turned that setting on. Commits made with an email that is not
+        linked to the account, and work outside GitHub, are not included. A quiet month does not
+        mean no work.
       </p>
       <div className="h-56">
         <ResponsiveContainer width="100%" height="100%">
