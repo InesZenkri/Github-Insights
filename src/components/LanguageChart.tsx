@@ -13,6 +13,10 @@ export function LanguageChart({ languages }: LanguageChartProps) {
         <Code className="text-green-400" />
         <h3 className="terminal-text font-medium">Most Used Languages</h3>
       </div>
+      <p className="text-xs text-gray-400 mb-2">
+        Counts every public repository, including forks. The list further down leaves forks out by
+        default, so its numbers can be lower.
+      </p>
       <div className="h-64">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={languages}>
