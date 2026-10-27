@@ -36,3 +36,19 @@ export interface UserStats {
   mostUsedLanguages: { language: string; count: number }[];
   contributionsByDay: Contribution[];
 }
+
+export type PullRequestState = 'merged' | 'open' | 'closed';
+
+export interface ExternalPullRequest {
+  title: string;
+  url: string;
+  repo: string; // owner/name
+  repoUrl: string;
+  state: PullRequestState;
+  updatedAt: string;
+}
+
+export interface ExternalPullRequestResult {
+  items: ExternalPullRequest[];
+  totalCount: number;
+}
