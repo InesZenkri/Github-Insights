@@ -36,7 +36,7 @@ The `/api/contributions` endpoint is a Netlify function in production and a Vite
 
 ## What the recruiter sections show
 
-The app lists evidence with links and does not rate people. It shows no skill scores, rankings or job-fit labels.
+The app lists evidence with links and does not rate people. It shows no skill scores, no ranking or comparison of people, and no job-fit labels. The only ordering is of one person's own repositories, by a rule shown on screen.
 
 - **Languages and the projects behind them:** each repository is counted under the primary language GitHub reports for it, with a link, description, stars and last push date. Forks are left out unless "Include forks" is ticked. The chart above it counts every public repository, including forks.
 - **Projects to open first:** up to six own repositories (no forks, no archived), ordered by stars and then latest push. The rule is shown on screen. It decides what to open first and is not a quality rating. License and topics appear only when GitHub lists them.
@@ -48,7 +48,7 @@ The app lists evidence with links and does not rate people. It shows no skill sc
 
 - **Public data only.** Missing data is not evidence of missing work: private work, work outside GitHub and work on other platforms do not appear.
 - **Real GitHub data:** profile details, public repositories, stars and forks come from the GitHub REST API.
-- **Contribution data:** totals, streaks and monthly counts come from the public contribution calendar on the user's profile, covering roughly the last year. GitHub shows private-repository contributions there only as anonymous counts, and only if the user turned that setting on. Commits made with an email address that is not linked to the account, commits in forks that were never merged upstream, and commits outside the default branch are not counted by GitHub. If the calendar cannot be loaded, the app shows an error instead of placeholder numbers.
+- **Contribution data:** totals, streaks and monthly counts come from the public contribution calendar on the user's profile, covering roughly the last year. GitHub shows private-repository contributions there only as anonymous counts, and only if the user turned that setting on. For commits, GitHub's documented rules mean that those made with an email address not linked to the account, commits in forks that were never merged upstream, and commits outside the default branch do not appear in the calendar. Other activity types follow GitHub's own rules. The app shows only what GitHub's public calendar displays. If the calendar cannot be loaded, the app shows an error instead of placeholder numbers.
 - Repository-based sections cover the first page of up to 100 repositories, most recently updated first, not necessarily the user's full account. The language section warns when that limit is reached.
 - The language views count repositories by primary language. They do not measure lines of code or proficiency.
 - The pull request list uses GitHub's search API, which allows 10 requests per minute without a token. If it fails, the app says it could not load the list, which does not mean there are none. The rest of the profile still shows.
