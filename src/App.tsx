@@ -8,9 +8,11 @@ import { ShareButtons } from './components/ShareButtons';
 import { LoadingState } from './components/LoadingState';
 import { ErrorMessage } from './components/ErrorMessage';
 import { getErrorMessage } from './utils/errors';
+import { ProfileLink } from './components/ProfileLink';
+import { buildProfileUrl, getUsernameFromSearch } from './utils/profileUrl';
 
 function App() {
-  const [username, setUsername] = useState('');
+  const [username, setUsername] = useState(() => getUsernameFromSearch(window.location.search));
   const statsRef = useRef<HTMLDivElement>(null);
 
   const { data: userData, isLoading: isLoadingUser, error: userError } = useQuery(
@@ -36,6 +38,12 @@ function App() {
 
   const handleSearch = (searchUsername: string) => {
     setUsername(searchUsername);
+    // Keep the address bar in sync so the current profile can be shared.
+    window.history.replaceState(
+      null,
+      '',
+      buildProfileUrl('', window.location.pathname, searchUsername)
+    );
   };
 
   return (
@@ -66,6 +74,10 @@ function App() {
                 <p className="terminal-text">@{userData.login}</p>
               </div>
             </div>
+
+            <ProfileLink
+              url={buildProfileUrl(window.location.origin, window.location.pathname, username)}
+            />
 
             <StatsCard 
               stats={contributionsData} 
