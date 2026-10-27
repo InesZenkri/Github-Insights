@@ -3,6 +3,7 @@ import { UserStats, Repository } from '../types/github';
 import { Calendar, Award, Flame, GitBranch, Star, GitFork } from 'lucide-react';
 import { StatBox } from './StatBox';
 import { LanguageChart } from './LanguageChart';
+import { LanguageEvidence } from './LanguageEvidence';
 import { VisitorCounter } from './VisitorCounter';
 import { Watermark } from './Watermark';
 
@@ -57,6 +58,7 @@ export function StatsCard({ stats, repos, username }: StatsCardProps) {
       </div>
 
       <LanguageChart languages={stats.mostUsedLanguages} />
+      <LanguageEvidence repos={repos} />
       <Watermark />
     </div>
   );
