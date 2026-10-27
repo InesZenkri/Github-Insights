@@ -38,7 +38,11 @@ export function TerminalPrompt({ onSearch }: TerminalPromptProps) {
             placeholder="gh user <username>"
             className="flex-1 bg-transparent border-none outline-none terminal-text"
             spellCheck="false"
+            enterKeyHint="go"
           />
+          {/* Safari only submits a form from the keyboard when it has a
+              rendered submit button, so keep one visually hidden. */}
+          <button type="submit" className="sr-only" tabIndex={-1} aria-hidden="true" />
         </div>
       </form>
     </div>
