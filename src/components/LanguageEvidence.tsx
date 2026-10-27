@@ -31,7 +31,8 @@ export function LanguageEvidence({ repos }: LanguageEvidenceProps) {
 
       <p className="text-xs text-gray-400 mb-4">
         Each repository is counted under the primary language GitHub reports for it. This shows
-        what is in public repositories, not how skilled someone is. Work that is private or
+        what is in public repositories, not how skilled someone is. Forks are left out unless
+        ticked, so counts can differ from the chart above, which includes forks. Work that is private or
         outside GitHub is not shown here.
         {mayBeIncomplete && ' Only the 100 most recently updated repositories were fetched, so the list may be incomplete.'}
       </p>
