@@ -11,7 +11,15 @@ export interface GitHubUser {
 
 export interface Repository {
   name: string;
-  language: string;
+  full_name: string;
+  html_url: string;
+  description: string | null;
+  language: string | null;
+  fork: boolean;
+  archived: boolean;
+  pushed_at: string | null;
+  topics?: string[];
+  license?: { spdx_id: string | null; name: string } | null;
   stargazers_count: number;
   forks_count: number;
 }
